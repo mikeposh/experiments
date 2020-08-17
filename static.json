@@ -1,0 +1,7 @@
+{
+    "head": [
+        "<style>#targetdiv { width: 100%; margin: 0 8px}</style>"
+    ],
+    "bodyInline": "<div id=\"targetdiv\"><iframe src=\"https://graphics.thomsonreuters.com/testfiles/2020-02-03-iowa/index.html?initialWidth=1440&amp;childId=targetdiv&amp;parentTitle=BBC%20Weather&amp;parentUrl=http%3A%2F%2Flocalhost.bbc.co.uk%3A8080%2Fweather%3Fdebug%3Dtrue\" width=\"100%\" scrolling=\"no\" marginheight=\"0\" frameborder=\"0\" height=\"1391px\"></iframe></div>",
+    "bodyLast": []
+}

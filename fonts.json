@@ -1,0 +1,11 @@
+{
+    "head": [
+        "<style>#targetdiv { width: 100%; margin: 0 8px}</style>"
+    ],
+    "bodyInline": "<div id=\"targetdiv\"></div>",
+    "bodyLast": [
+        "<script crossorigin src=\"https://graphics.thomsonreuters.com/pym.min.js\"></script>",
+        "<script>console.log('DEBUG PYM', window.pym)</script>",
+        "<script>document.domain='bbc.co.uk'; if(typeof pym === 'undefined'){console.error('DEBUG No bloody pym!')}else{console.log('DEBUG YES pym!'); var pymParent = new pym.Parent('targetdiv', 'https://graphics.thomsonreuters.com/testfiles/2020-02-03-iowa/index.html', {});}</script>"
+    ]
+}

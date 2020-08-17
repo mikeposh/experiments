@@ -1,0 +1,10 @@
+{
+    "head": [
+        "<style>#targetdiv { width: 100%; margin: 0 8px}</style>",
+        "<script src=\"https://graphics.thomsonreuters.com/pym.min.js\"></script>"
+    ],
+    "bodyInline": "<p>Before banner target</p><div id=\"targetdiv\"></div><p>After banner target</p>",
+    "bodyLast": [
+        "<script>document.domain='bbc.co.uk'; var pymParent = new pym.Parent('targetdiv', 'https://graphics.thomsonreuters.com/testfiles/2020-02-03-iowa/index.html', {});</script>"
+    ]
+}
