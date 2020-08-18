@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Elections banner mark up</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    html {
+        box-sizing: border-box;
+    }
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+    ul, li, p {
+        margin: 0;
+        padding: 0;
+    }
+    ul { list-style: none;}
+
+    body {
+        font-size: 62.5%;
+        line-height: 1;
+    }
+    body {
+        font-family: Helvetica,Arial,freesans,sans-serif;
+    }
+
+    .vh {
+        -webkit-clip-path: inset(100%);
+        clip-path: inset(100%);
+        -webkit-clip: rect(1px,1px,1px,1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        position: absolute;
+        width: 1px;
+        overflow: hidden;
+        margin: 0px;
+    }
+    </style>
+
+<style>
+:root {
+    --bar--height: 40px;
+    --color--party1: #0a6aa6;
+    --color--party2: #cd181c;
+    --votes--total: 538;
+    --votes--party1: 24;
+    --votes--party2: 105;
+}
+.editorial-intro {
+    font-size: 1.2rem;
+    margin: 16px 32px 32px;
+    text-align: center;
+}
+.votes__metadata {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+    line-height: 1.6;
+    width: calc(100% - 300px);
+    padding: 0 8px;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    left: 50%
+}
+.metadata__item {
+    transform: translateX(-50%);
+}
+.metadata__states {
+    font-size: 1rem;
+    max-width: 55%;
+}
+.metadata__updated {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+.votes__to-win {
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.voting-details {
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
+
+.votes {
+    /* border: solid pink 1px; */
+    padding-top: 212px;
+    position: relative;
+}
+.votes__bar {
+    border: solid black 1px;
+    display: block;
+    height: var(--bar--height);
+    position: relative;
+    width: calc(100% - 16px);
+}
+.vote__party {
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    font-size: 1.3rem;
+    padding-top: 100px;
+    position: absolute;
+    top: -200px;
+    text-transform: uppercase;
+}
+.vote__party--party2 {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Trump_LTR.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+.vote__party--party1 {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Clinton_LTR.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+.vote__name {
+    font-size: 46px;
+    font-weight: bold;
+    position: absolute;
+    top: -70px;
+    text-transform: uppercase;
+}
+.vote__party--party2,
+.vote__name--party2 {
+    color: var(--color--party2);
+    right: 0;
+}
+.vote__party--party1,
+.vote__name--party1 {
+    color: var(--color--party1);
+    left: 0;
+}
+
+.vote__count {
+    display: block;
+    font-size: 24px;
+    height: var(--bar--height);
+    line-height: var(--bar--height);
+    position: absolute;
+    top: 0;
+}
+.vote__count__value {
+    color: black;
+    display: block;
+    position: absolute;
+    top: 50px;
+}
+.vote__count__value--party1 {
+    left: 8px;
+}
+.vote__count__value--party2 {
+    right: 8px;
+}
+.vote__count--party1 {
+    background-color: var(--color--party1);
+    color: white;
+    left: 0;
+    width: calc(100% * (var(--votes--party1) / 538));
+}
+.vote__count--party2 {
+    background-color: var(--color--party2);
+    color: white;
+    right: 0;
+    width: calc(100% *  var(--votes--party2) / var(--votes--total) );
+}
+
+</style>
+</head>
+<body>
+<h1>BBC News home</h1>
+
+<h2>US Election results</h2>
+
+<svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
+
+<p class="editorial-intro">This is editorial text which describes what's happening right now</p>
+
+<div class="votes">
+    <ul class="votes__bar" role="list">
+        <li class="votes_vote vote vote--party1" role="listitem">
+            <span role="text">
+                <span class="vote__party vote__party--party1">Democrat</span><span class="vh">, </span>
+                <span class="vote__name vote__name--party1">Biden</span><span class="vh">, </span>
+                <span class="vote__count vote__count--party1"><span class="vote__count__value vote__count__value--party1">24</span></span>
+            </span>
+        </li>
+        <li class="votes_vote vote vote--party2" role="listitem">
+            <span role="text">
+                <span class="vote__party vote__party--party2">Republican</span><span class="vh">, </span>
+                <span class="vote__name vote__name--party2">Trump</span><span class="vh">, </span>
+                <span class="vote__count vote__count--party2"><span class="vote__count__value vote__count__value--party2">105</span></span>
+            </span>
+        </li>
+    </ul>
+
+    <p class="votes__to-win">270 needed to win</p>
+    <div class="votes__metadata metadata">
+        <p class="metadata__item metadata__states">14 of 50 states called</p>
+        <p class="metadata__item metadata__updated">Updated <time>20 minutes ago</time></p>
+        <!-- <p class="metadata__item">AAAAA BBBBB AAAAA</p>
+        <p class="metadata__item">DDD AAAAA BBBBB AAAAA DDD</p> -->
+    </div>
+</div>
+
+<details class="voting-details">
+    <summary>Polls close across the US but postal votes cause elections to run to second day</summary>
+
+    <p>Details about polls close across the US but postal votes cause elections to run to second day and what a story this is.</p>
+</details>
+
+<a href="#">US Election results page</a>
+
+<a href="#">
+    <span role="text">
+        <span aria-hidden="true">LIVE </span>
+        <span class="vh">Live</span>
+        Updates
+    </span>
+</a>
+</body>
+</html>

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Elections banner mark up</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    html {
+        box-sizing: border-box;
+    }
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+    ul, li, p {
+        margin: 0;
+        padding: 0;
+    }
+    ul { list-style: none;}
+
+    body {
+        font-size: 62.5%;
+        line-height: 1;
+    }
+    body {
+        font-family: Helvetica,Arial,freesans,sans-serif;
+    }
+
+    .vh {
+        -webkit-clip-path: inset(100%);
+        clip-path: inset(100%);
+        -webkit-clip: rect(1px,1px,1px,1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        position: absolute;
+        width: 1px;
+        overflow: hidden;
+        margin: 0px;
+    }
+    </style>
+
+<style>
+:root {
+    --bar--height: 40px;
+    --color--democrat: #0a6aa6;
+    --color--republican: #cd181c;
+    --votes--total: 538;
+    --votes--democrat: 24;
+    --votes--republican: 105;
+}
+.editorial-intro {
+    font-size: 1.2rem;
+    margin: 1rem 2rem;
+    text-align: center;
+}
+.votes {
+    /* border: solid pink 1px; */
+    padding-top: 212px;
+    position: relative;
+}
+.votes__bar {
+    border: solid black 1px;
+    display: block;
+    height: var(--bar--height);
+    position: relative;
+    width: calc(100% - 16px);
+}
+.votes__party {
+    background-repeat: no-repeat;
+    background-position-x: 0px;
+    background-position-y: 0px;
+    font-size: 1.3rem;
+    padding-top: 100px;
+    position: absolute;
+    top: -200px;
+    text-transform: uppercase;
+}
+.votes__party--republican {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Trump_LTR.png);
+    background-repeat: no-repeat;
+    background-position: top right;
+}
+.votes__party--democrat {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Clinton_LTR.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+}
+.votes__name {
+    font-size: 46px;
+    font-weight: bold;
+    position: absolute;
+    top: -70px;
+    text-transform: uppercase;
+}
+.votes__party--republican,
+.votes__name--republican {
+    color: var(--color--republican);
+    right: 0;
+}
+.votes__party--democrat,
+.votes__name--democrat {
+    color: var(--color--democrat);
+    left: 0;
+}
+.votes__metadata {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+    line-height: 1.6;
+    width: calc(100% - 300px);
+    padding: 0 8px;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    left: 50%
+}
+.metadata__item {
+    transform: translateX(-50%);
+}
+.metadata__states {
+    font-size: 1rem;
+    max-width: 55%;
+}
+.metadata__updated {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+.votes__to-win {
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.voting-details {
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
+
+
+
+.votes__count {
+    display: block;
+    font-size: 24px;
+    height: var(--bar--height);
+    line-height: var(--bar--height);
+    position: absolute;
+    top: 0;
+}
+.votes__count--democrat {
+    background-color: var(--color--democrat);
+    color: white;
+    left: 0;
+    width: calc(100% * (var(--votes--democrat) / 538));
+}
+.votes__count--republican {
+    background-color: var(--color--republican);
+    color: white;
+    right: 0;
+    width: calc(100% *  var(--votes--republican) / var(--votes--total) );
+}
+
+</style>
+</head>
+<body>
+<h1>BBC News home</h1>
+
+<h2>US Election results</h2>
+
+<svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
+
+<p class="editorial-intro">This is editorial text which describes what's happening right now</p>
+
+<div class="votes">
+    <ul class="votes__bar" role="list">
+        <li class="votes_vote vote vote--democrat" role="listitem">
+            <span role="text">
+                <span class="votes__party votes__party--democrat">Democrat</span><span class="vh">, </span>
+                <span class="votes__name votes__name--democrat">Biden</span><span class="vh">, </span>
+                <span class="votes__count votes__count--democrat">24</span>
+            </span>
+        </li>
+        <li class="votes_vote vote vote--republican" role="listitem">
+            <span role="text">
+                <span class="votes__party votes__party--republican">Republican</span><span class="vh">, </span>
+                <span class="votes__name votes__name--republican">Trump</span><span class="vh">, </span>
+                <span class="votes__count votes__count--republican">105</span>
+            </span>
+        </li>
+    </ul>
+
+    <p class="votes__to-win">270 needed to win</p>
+    <div class="votes__metadata metadata">
+        <p class="metadata__item metadata__states">14 of 50 states called</p>
+        <p class="metadata__item metadata__updated">Updated <time>20 minutes ago</time></p>
+        <!-- <p class="metadata__item">AAAAA BBBBB AAAAA</p>
+        <p class="metadata__item">DDD AAAAA BBBBB AAAAA DDD</p> -->
+    </div>
+</div>
+
+<details class="voting-details">
+    <summary>Polls close across the US but postal votes cause elections to run to second day</summary>
+
+    <p>Details about polls close across the US but postal votes cause elections to run to second day and what a story this is.</p>
+</details>
+
+<a href="#">US Election results page</a>
+
+<a href="#">
+    <span role="text">
+        <span aria-hidden="true">LIVE </span>
+        <span class="vh">Live</span>
+        Updates
+    </span>
+</a>
+</body>
+</html>
