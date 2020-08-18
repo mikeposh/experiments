@@ -42,9 +42,6 @@
 
 <style>
 :root {
-    --to-win--offset: -70px;
-    --to-win--gap: 0.5rem;
-    --to-win--project: 6px;
     --bar--color: #e6e6e6;
     --bar--height: 48px;
     --color--party1: #0a6aa6;
@@ -92,22 +89,16 @@
 .votes__to-win {
     font-size: 1rem;
     text-align: center;
-    transform: translateY(calc(var(--to-win--offset) - var(--to-win--gap)));
-
-    /* margin: 0 auto;
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 24px; */
+    transform: translateY(-74px);
 }
 .votes__to-win::after {
     border-right: solid 1px black;
     content: " ";
     display: block;
-    height: calc(var(--to-win--project) + var(--bar--height));
+    height: calc(4px + var(--bar--height));
     left: calc(50% - 1px);
     position: absolute;
-    top: calc(-48px - var(--to-win--project) - var(--to-win--offset) + var(--to-win--gap));
+    top: 22px;
     width: 1px;
 }
 
