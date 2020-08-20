@@ -1,0 +1,44 @@
+<style>
+  html {
+      box-sizing: border-box;
+  }
+  *, *::before, *::after {
+      box-sizing: inherit;
+  }
+  #grid {
+    display: grid;
+    grid-template-columns: 20px;
+    grid-auto-columns: 40px 60px;
+    grid-template-rows: 20px;
+    grid-auto-rows: 40px;
+  }
+  #A { grid-column: 1; grid-row: 1; background-color: rgba(0, 255, 0, 0.8) }
+  #B { grid-column: 2; grid-row: 1; background-color: rgba(0, 0, 255, 0.8) }
+  #C { grid-column: 1; grid-row: 2; background-color: rgba(0, 0, 0, 0.4) }
+  #D { grid-column: 2; grid-row: 2; background-color: rgba(255, 0, 0, 0.8) }
+  #E { grid-column: 3; grid-row: 2; background-color: rgba(255, 255, 0, 0.8) }
+  #F { grid-column: 4; grid-row: 2; background-color: rgba(255, 125, 0, 0.8) }
+  #G { grid-column: 5; grid-row: 2; background-color: rgba(255, 0, 0, 0.8) }
+
+  .item {
+      /* height: 130px;
+      width: 250px; */
+      padding: 4px;
+      border: solid black 1px;
+   }
+   @media (max-width: 30rem) {
+       #grid {
+           display: block;
+       }
+   }
+</style>
+
+<div id="grid">
+  <div class="item" id="A">A</div>
+  <div class="item" id="B">B</div>
+  <div class="item" id="C">C</div>
+  <div class="item" id="D">D</div>
+  <div class="item" id="E">E</div>
+  <div class="item" id="F">F</div>
+  <div class="item" id="G">G</div>
+</div>

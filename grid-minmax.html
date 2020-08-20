@@ -1,0 +1,39 @@
+<style>
+div > div { border: solid black 1px; }
+div > div:nth-child(6n + 1) { background-color: rgba(0, 255, 0, 0.8) }
+div > div:nth-child(6n + 2) { background-color: rgba(0, 0, 255, 0.8) }
+div > div:nth-child(6n + 3) { background-color: rgba(0, 0, 0, 0.4) }
+div > div:nth-child(6n + 4) { background-color: rgba(255, 0, 0, 0.8) }
+div > div:nth-child(6n + 5) { background-color: rgba(255, 255, 0, 0.8) }
+div > div:nth-child(6n + 0) { background-color: rgba(255, 125, 0, 0.8) }
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 3fr 2fr;
+  grid-auto-rows: minmax(50px, 70px);
+  /* grid-auto-rows: minmax(100px, auto); */
+}
+
+@media (max-width: 30rem) {
+    .wrapper {
+        display: block;
+    }
+}
+
+#six { grid-row-start: 4; grid-row-end: 6 }
+
+</style>
+
+<div class="wrapper">
+  <div>One</div>
+  <div>Two
+    <p>I have some more content in.</p>
+    <p>This makes me taller than 100 pixels.</p>
+  </div>
+  <div>Three</div>
+  <div>Four</div>
+  <div>Five</div>
+  <div id="six">Six</div>
+  <div>Seven</div>
+</div>
