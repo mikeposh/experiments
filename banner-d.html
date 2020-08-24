@@ -5,7 +5,7 @@
     <title>Elections banner mark up</title>
     <meta charset="utf-8">
     <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
     *, *:before, *:after {
         box-sizing: inherit;
@@ -39,15 +39,11 @@
 
 <style>
 :root {
+    --to-win--offset: -70px;
+    --to-win--gap: 0.5rem;
+    --to-win--projection: 6px;
+
     --bar--color: #e6e6e6;
-    --color--party1: #0a6aa6;
-    --color--party2: #cd181c;
-    --color--news-ebon: #222222;
-    --color--news-rhino: #5a5a5a;
-    --color--news-ghost: #fdfdfd;
-    --color--news-pebble: #aeaeb5;
-}
-.banner {
     --bar--height: 48px;
     --bar--height: 3.0rem;
     --bar--height-above: 13.25rem;
@@ -55,17 +51,32 @@
     --party--name-above-bar: 92px;
     --party--pict-above-name: 114px;
 
+    --color--party1: #0a6aa6;
+    --color--party2: #cd181c;
+    --votes--total: 538;
+    --votes--party1: 270;
+    --votes--party2: 270;
+    --votes--party1: 268;
+    --votes--party2: 268;
+    --votes--party1: 24;
+    --votes--party2: 105;
+}
+.banner {
     padding: 16px 16px;
     font-family: ReithSans,Arial,Helvetica,freesans,sans-serif;
     box-sizing: border-box;
 }
 .editorial-intro {
+    font-size: 1.2rem;
+    line-height: 1.2;
     margin: 16px 32px 32px;
     text-align: center;
 }
 .votes__metadata {
     color: rgba(0, 0, 0, 0.6);
     font-size: 1rem;
+    line-height: 1.6;
+    width: calc(100% - 300px);
     padding: 0 8px;
     position: absolute;
     top: 0px;
@@ -76,11 +87,34 @@
     transform: translateX(-50%);
 }
 .metadata__states {
+    font-size: 1rem;
+    line-height: 1.2;
+    max-width: 55%;
 }
 .metadata__updated {
+    font-size: 0.8rem;
     margin-top: 8px;
     text-transform: uppercase;
 }
+.votes__to-win {
+    font-size: 1rem;
+    left: calc(50% - 1px);
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: calc(var(--party--name-above-bar) + var(--party--pict-above-name));
+    transform: translate(-50%, calc(-100% - var(--to-win--gap) - var(--to-win--projection)));
+}
+.votes__to-win::after {
+    background-color: black;
+    content: " ";
+    height: calc(var(--to-win--projection) + var(--bar--height));
+    left: 50%;
+    position: absolute;
+    top: calc(100% + var(--to-win--gap));
+    width: 1px;
+}
+
 .voting-details {
     font-size: 0.8rem;
     margin-top: 3rem;
@@ -88,18 +122,6 @@
 
 .votes {
     /* border: solid pink 1px; */
-    --votes--total: 538;
-    --votes--party1: 270;
-    --votes--party2: 270;
-    --votes--party1: 268;
-    --votes--party2: 268;
-    --votes--party1: 24;
-    --votes--party2: 105;
-
-    --to-win--offset: -70px;
-    --to-win--gap: 0.5rem;
-    --to-win--projection: 6px;
-
     padding-top: calc(var(--party--name-above-bar) + var(--party--pict-above-name));
     padding-bottom: var(--bar--height);
     position: relative;
@@ -114,7 +136,8 @@
 }
 .vote__party {
     background-repeat: no-repeat;
-    background-size: 64px;
+    background-position-x: 0px;
+    background-position-y: 0px;
     padding-top: var(--party--pict-above-name);
     position: absolute;
     top: calc(-1 * (var(--party--name-above-bar) + var(--party--pict-above-name)));
@@ -122,31 +145,14 @@
 }
 .vote__party--party2 {
     background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Trump_LTR.png);
+    background-repeat: no-repeat;
     background-position: top right;
 }
 .vote__party--party1 {
     background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Clinton_LTR.png);
+    background-repeat: no-repeat;
     background-position: top left;
 }
-
-@media (min-width: 63em) {
-    .vote__party {
-        padding-top: 0;
-        height: 74px;
-        top: -88px;
-    }
-    .vote__party--party2,
-    .vote__name--party2 {
-        background-position: center right;
-        padding-right: 100px;
-    }
-    .vote__party--party1,
-    .vote__name--party1 {
-        background-position: center left;
-        padding-left: 100px;
-    }
-}
-
 .vote__name {
     font-weight: bold;
     position: absolute;
@@ -196,94 +202,6 @@
     right: 0;
     width: calc(100% *  var(--votes--party2) / var(--votes--total) );
 }
-.votes__to-win {
-    font-size: 1rem;
-    left: calc(50% - 1px);
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: calc(var(--party--name-above-bar) + var(--party--pict-above-name));
-    transform: translate(-50%, calc(-100% - var(--to-win--gap) - var(--to-win--projection)));
-}
-.votes__to-win::after {
-    background-color: black;
-    content: " ";
-    height: calc(var(--to-win--projection) + var(--bar--height));
-    left: 50%;
-    position: absolute;
-    top: calc(100% + var(--to-win--gap));
-    width: 1px;
-}
-
-/* The expandable detail note */
-.note {
-    /* border: solid 1px var(--color--news-pebble); */
-    width: 80%;
-}
-.note__summary:hover,
-.note__summary:focus {
-    text-decoration: underline;
-}
-.note__summary:focus {
-    outline: none;
-}
-.note__summary {
-    --arrow-height: 20px;
-    --arrow-color: black;
-    --arrow-background-color: white;
-    --arrow-offset-y: 8px;
-    --arrow-offset-x: 8px;
-    border: solid 1px var(--color--news-ebon);
-    box-sizing: border-box;
-    display: block;
-    padding: 8px;
-    padding-right: 30px;
-    position: relative;
-    list-style: none;
-}
-.note__summary::-webkit-details-marker {
-  display: none;
-}
-.note__summary::before {
-    content: "";
-    position: absolute;
-    top: var(--arrow-offset-y);
-    right: var(--arrow-offset-x);
-    background: transparent;
-    border-left: solid calc(var(--arrow-height) / 2) transparent;
-    border-right: solid calc(var(--arrow-height) / 2) transparent;
-    border-top: solid calc(var(--arrow-height)) var(--arrow-color);
-    height: calc(var(--arrow-height));
-    width: calc(var(--arrow-height));
-}
-.note__summary::after {
-    content: "";
-    position: absolute;
-    right: calc(var(--arrow-offset-x) + var(--arrow-height) / 4);
-    top: var(--arrow-offset-y);
-    background: transparent;
-    border-left: solid calc(var(--arrow-height) / 4) transparent;
-    border-right: solid calc(var(--arrow-height) / 4) transparent;
-    border-top: solid calc(var(--arrow-height) / 2) var(--arrow-background-color);
-    height: calc(var(--arrow-height) / 2);
-    width: calc(var(--arrow-height) / 2);
-}
-.note[open] .note__summary::before {
-    transform: rotate(180deg);
-}
-.note[open] .note__summary::after {
-    transform: translateY(calc(var(--arrow-height) / 2)) rotate(180deg);
-}
-.note__details {
-    border: solid 1px var(--color--news-pebble);
-    border-top: none;
-    /* margin-top: 1rem; */
-    padding: 8px;
-}
-
-.results-links {
-    margin-top: 3rem;
-}
 
 </style>
 <link rel="stylesheet" href="https://m.files.bbci.co.uk/modules/bbc-morph-news-page-styles/2.4.1/enhanced.css">
@@ -292,12 +210,12 @@
 <body>
 <h1>BBC News home</h1>
 
-<section class="gel-wrap banner" role="region" aria-labelledby="nw-c-Election_results__title">
+<section class="banner" role="region" aria-labelledby="nw-c-Election_results__title">
 <h2 id="nw-c-Election_results__title">US Election results</h2>
 
 <svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
 
-<p class="gel-trafalgar editorial-intro">This is editorial text which describes what's happening right now</p>
+<p class="editorial-intro">This is editorial text which describes what's happening right now</p>
 
 <div class="votes">
     <ul class="votes__candidates" role="list">
@@ -319,28 +237,28 @@
     <p class="votes__to-win">270 to win</p>
 
     <div class="votes__metadata metadata">
-        <p class="gel-long-primer metadata__item metadata__states">14 of 50 states called</p>
-        <p class="gel-minion metadata__item metadata__updated">Updated <time>20 minutes ago</time></p>
+        <p class="metadata__item metadata__states">14 of 50 states called</p>
+        <p class="metadata__item metadata__updated">Updated <time>20 minutes ago</time></p>
+        <!-- <p class="metadata__item">AAAAA BBBBB AAAAA</p>
+        <p class="metadata__item">DDD AAAAA BBBBB AAAAA DDD</p> -->
     </div>
 </div>
 
-<details class="gel-long-primer note">
-    <summary class="gel-long-primer-bold note__summary">Polls close across the US but postal votes cause elections to run to second day</summary>
+<details class="voting-details">
+    <summary>Polls close across the US but postal votes cause elections to run to second day</summary>
 
-    <p class="note__details">Details about polls close across the US but postal votes cause elections to run to second day and what a story this is.</p>
+    <p>Details about polls close across the US but postal votes cause elections to run to second day and what a story this is.</p>
 </details>
 
-<div class="results-links">
-    <a href="#">US Election results page</a>
+<a href="#">US Election results page</a>
 
-    <a href="#">
+<a href="#">
     <span role="text">
         <span aria-hidden="true">LIVE </span>
         <span class="vh">Live</span>
         Updates
     </span>
-    </a>
-</div>
+</a>
 </section>
 
 </body>
