@@ -96,21 +96,24 @@
 
     --name--y-offset: 62px;
     --party--above-name: 20px;
-    --party--pict-above-party: 80px;
+    --picture--above-party: 80px;
+    --picture--height: 74px;
+    --picture--width: 74px;
 
     --name--y-offset--desktop: 72px;
     --party--above-name--desktop: 14px;
-    --party--pict-above-party--desktop: 30px;
-    --pict--height--desktop: 90px;
-
-    --padding-top-desktop: 116px;
+    --picture--above-party--desktop: 32px;
+    --picture--height--desktop: 90px;
+    --picture--width--desktop: 90px;
 
     --to-win--offset: -70px;
     --to-win--gap: 0.2em;
     --to-win--projection: 6px;
 
-    padding-top: calc(var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party));
+    padding-top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party));
     padding-bottom: 1.6em;
+
+    /* votes-to-win and metadata need to be positioned relative to this element with the current markup */
     position: relative;
 }
 .votes__candidates {
@@ -123,10 +126,11 @@
 }
 .vote__party {
     background-repeat: no-repeat;
-    background-size: 64px;
-    padding-top: var(--party--pict-above-party);
+    background-size: var(--picture--height);
+    min-height: var(--picture--height);
+    padding-top: var(--picture--above-party);
     position: absolute;
-    top: calc(-1 * (var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party)));
+    top: calc(-1 * (var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party)));
     text-transform: uppercase;
 }
 .vote__party--party2 {
@@ -137,7 +141,6 @@
     background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Clinton_LTR.png);
     background-position: top left;
 }
-
 .vote__name {
     font-weight: bold;
     position: absolute;
@@ -154,7 +157,6 @@
     color: var(--color--party1);
     left: 0;
 }
-
 .vote__count {
     display: block;
     font-weight: bold;
@@ -189,11 +191,10 @@
 }
 .votes__to-win {
     font-size: 1rem;
-    left: calc(50% - 1px);
     left: 50%;
     position: absolute;
     text-align: center;
-    top: calc(var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party));
+    top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party));
     transform: translate(-50%, calc(-100% - var(--to-win--gap) - var(--to-win--projection)));
 }
 .votes__to-win::after {
@@ -209,13 +210,13 @@
 /* 900px */
 @media (min-width: 56.25em) {
     .votes {
-        padding-top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--party--pict-above-party--desktop));
+        padding-top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop));
     }
     .vote__party {
-        background-size: var(--pict--height--desktop);
-        padding-top: var(--party--pict-above-party--desktop);
-        height: var(--pict--height--desktop);
-        top: calc(-1 * (var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--party--pict-above-party--desktop)));
+        background-size: var(--picture--height--desktop);
+        padding-top: var(--picture--above-party--desktop);
+        min-height: var(--picture--height--desktop);
+        top: calc(-1 * (var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop)));
     }
     .vote__name {
         top: calc(-1 * var(--name--y-offset--desktop));
@@ -223,20 +224,20 @@
     .vote__party--party2,
     .vote__name--party2 {
         background-position: bottom right;
-        padding-right: 100px;
+        padding-right: calc(var(--picture--width--desktop) + 8px);
     }
     .vote__party--party1,
     .vote__name--party1 {
         background-position: bottom left;
-        padding-left: 100px;
+        padding-left: calc(var(--picture--width--desktop) + 8px);
     }
     .votes__metadata {
         padding-top: 16px;
-        top: 32px;
-        max-width: calc(100% - 2 * (4px + 90px));
+        top: 0;
+        max-width: calc(100% - 2 * (4px + var(--picture--width--desktop)));
     }
     .votes__to-win {
-        top: 115px;
+        top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop));
     }
 }
 
