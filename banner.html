@@ -46,15 +46,9 @@
     --color--news-rhino: #5a5a5a;
     --color--news-ghost: #fdfdfd;
     --color--news-pebble: #aeaeb5;
+    --color--news-kingfisher: #1380A1;
 }
 .banner {
-    --bar--height: 48px;
-    --bar--height: 3.0rem;
-    --bar--height-above: 13.25rem;
-    --bar--height-above: 212px;
-    --party--name-above-bar: 92px;
-    --party--pict-above-name: 114px;
-
     padding: 16px 16px;
     font-family: ReithSans,Arial,Helvetica,freesans,sans-serif;
     box-sizing: border-box;
@@ -70,12 +64,11 @@
     position: absolute;
     top: 0px;
     text-align: center;
-    left: 50%
+    left: 50%;
+    max-width: calc(100% - 2 * (4px + 64px));
 }
 .metadata__item {
     transform: translateX(-50%);
-}
-.metadata__states {
 }
 .metadata__updated {
     margin-top: 8px;
@@ -96,12 +89,28 @@
     --votes--party1: 24;
     --votes--party2: 105;
 
+    --bar--height: 48px;
+    --bar--height: 3.0rem;
+    --bar--height-above: 13.25rem;
+    --bar--height-above: 212px;
+
+    --name--y-offset: 62px;
+    --party--above-name: 20px;
+    --party--pict-above-party: 80px;
+
+    --name--y-offset--desktop: 72px;
+    --party--above-name--desktop: 14px;
+    --party--pict-above-party--desktop: 30px;
+    --pict--height--desktop: 90px;
+
+    --padding-top-desktop: 116px;
+
     --to-win--offset: -70px;
-    --to-win--gap: 0.5rem;
+    --to-win--gap: 0.2em;
     --to-win--projection: 6px;
 
-    padding-top: calc(var(--party--name-above-bar) + var(--party--pict-above-name));
-    padding-bottom: var(--bar--height);
+    padding-top: calc(var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party));
+    padding-bottom: 1.6em;
     position: relative;
 }
 .votes__candidates {
@@ -115,9 +124,9 @@
 .vote__party {
     background-repeat: no-repeat;
     background-size: 64px;
-    padding-top: var(--party--pict-above-name);
+    padding-top: var(--party--pict-above-party);
     position: absolute;
-    top: calc(-1 * (var(--party--name-above-bar) + var(--party--pict-above-name)));
+    top: calc(-1 * (var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party)));
     text-transform: uppercase;
 }
 .vote__party--party2 {
@@ -129,28 +138,10 @@
     background-position: top left;
 }
 
-@media (min-width: 63em) {
-    .vote__party {
-        padding-top: 0;
-        height: 74px;
-        top: -88px;
-    }
-    .vote__party--party2,
-    .vote__name--party2 {
-        background-position: center right;
-        padding-right: 100px;
-    }
-    .vote__party--party1,
-    .vote__name--party1 {
-        background-position: center left;
-        padding-left: 100px;
-    }
-}
-
 .vote__name {
     font-weight: bold;
     position: absolute;
-    top: -72px;
+    top: calc(-1 * var(--name--y-offset));
     text-transform: uppercase;
 }
 .vote__party--party2,
@@ -202,7 +193,7 @@
     left: 50%;
     position: absolute;
     text-align: center;
-    top: calc(var(--party--name-above-bar) + var(--party--pict-above-name));
+    top: calc(var(--name--y-offset) + var(--party--above-name) + var(--party--pict-above-party));
     transform: translate(-50%, calc(-100% - var(--to-win--gap) - var(--to-win--projection)));
 }
 .votes__to-win::after {
@@ -215,16 +206,51 @@
     width: 1px;
 }
 
-/* The expandable detail note */
+/* 900px */
+@media (min-width: 56.25em) {
+    .votes {
+        padding-top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--party--pict-above-party--desktop));
+    }
+    .vote__party {
+        background-size: var(--pict--height--desktop);
+        padding-top: var(--party--pict-above-party--desktop);
+        height: var(--pict--height--desktop);
+        top: calc(-1 * (var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--party--pict-above-party--desktop)));
+    }
+    .vote__name {
+        top: calc(-1 * var(--name--y-offset--desktop));
+    }
+    .vote__party--party2,
+    .vote__name--party2 {
+        background-position: bottom right;
+        padding-right: 100px;
+    }
+    .vote__party--party1,
+    .vote__name--party1 {
+        background-position: bottom left;
+        padding-left: 100px;
+    }
+    .votes__metadata {
+        padding-top: 16px;
+        top: 32px;
+        max-width: calc(100% - 2 * (4px + 90px));
+    }
+    .votes__to-win {
+        top: 115px;
+    }
+}
+
+/* The expandable detail (helper?) note */
 .note {
-    /* border: solid 1px var(--color--news-pebble); */
-    width: 80%;
+    width: 100%;
 }
 .note__summary:hover,
 .note__summary:focus {
+    color: var(--color--news-kingfisher);
     text-decoration: underline;
 }
 .note__summary:focus {
+    /* setting this transparent seems a bit dishonest ... */
     outline: none;
 }
 .note__summary {
@@ -237,7 +263,7 @@
     box-sizing: border-box;
     display: block;
     padding: 8px;
-    padding-right: 30px;
+    padding-right: 36px;
     position: relative;
     list-style: none;
 }
@@ -277,7 +303,6 @@
 .note__details {
     border: solid 1px var(--color--news-pebble);
     border-top: none;
-    /* margin-top: 1rem; */
     padding: 8px;
 }
 
@@ -297,9 +322,9 @@
 
 <svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
 
-<p class="gel-trafalgar editorial-intro">This is editorial text which describes what's happening right now</p>
+<p class="gel-double-pica editorial-intro">This is editorial text which describes what's happening right now</p>
 
-<div class="votes">
+<div class="gel-canon votes">
     <ul class="votes__candidates" role="list">
         <li class="votes_vote vote vote--party1" role="listitem">
             <span role="text">
@@ -316,10 +341,10 @@
             </span>
         </li>
     </ul>
-    <p class="votes__to-win">270 to win</p>
+    <p class="gel-long-primer votes__to-win">270 to win</p>
 
     <div class="votes__metadata metadata">
-        <p class="gel-long-primer metadata__item metadata__states">14 of 50 states called</p>
+        <p class="gel-long-primer metadata__item metadata__states">14 of 50 <br>states called</p>
         <p class="gel-minion metadata__item metadata__updated">Updated <time>20 minutes ago</time></p>
     </div>
 </div>
