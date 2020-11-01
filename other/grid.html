@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Grid layout example</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *, *::after, *::before {
+        box-sizing: inherit;
+      }
+      #container {
+        display: grid;
+      }
+    </style>
+</head>
+<body>
+  <h1>Details element</h1>
+
+  <div id="container">
+    <div id="top-item">
+      <p>Some text in top item</p>
+    </div>
+    <div id="sidebar-item">
+      <p>Sidebar text</p>
+    </div>
+    <div id="main-contents">
+      <p>Main contents</p>
+      <p>Main contents</p>
+      <p>Main contents</p>
+      <p>Main contents</p>
+      <p>Main contents</p>
+    </div>
+  </div>
+</body>
+</html>

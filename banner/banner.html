@@ -82,26 +82,28 @@
 .votes {
     /* border: solid pink 1px; */
     --votes--total: 538;
-    --votes--party1: 270;
-    --votes--party2: 270;
+
     --votes--party1: 268;
     --votes--party2: 268;
+
     --votes--party1: 24;
     --votes--party2: 105;
 
+    /* bar is 48px for both mobile and desktop - just need to center fonts of different heights within bar */
     --bar--height: 48px;
-    --bar--height: 3.0rem;
-    --bar--height-above: 13.25rem;
-    --bar--height-above: 212px;
 
     --name--y-offset: 62px;
+    --name--y-offset: 3.875rem;
     --party--above-name: 20px;
-    --picture--above-party: 80px;
+    --party--above-name: 1.25rem;
+    --picture--above-party: 5rem;
+
     --picture--height: 74px;
     --picture--width: 74px;
 
-    --name--y-offset--desktop: 72px;
-    --party--above-name--desktop: 14px;
+    --name--y-offset--desktop: 4.5rem;
+    --party--above-name--desktop: 1.375rem;
+
     --picture--above-party--desktop: 32px;
     --picture--height--desktop: 90px;
     --picture--width--desktop: 90px;
@@ -165,18 +167,6 @@
     position: absolute;
     top: 0;
 }
-.vote__count__value {
-    color: black;
-    display: block;
-    position: absolute;
-    top: var(--bar--height);
-}
-.vote__count__value--party1 {
-    left: 0px;
-}
-.vote__count__value--party2 {
-    right: 0px;
-}
 .vote__count--party1 {
     background-color: var(--color--party1);
     color: white;
@@ -188,6 +178,18 @@
     color: white;
     right: 0;
     width: calc(100% *  var(--votes--party2) / var(--votes--total) );
+}
+.vote__count__value {
+    color: black;
+    display: block;
+    position: absolute;
+    top: var(--bar--height);
+}
+.vote__count__value--party1 {
+    left: 0px;
+}
+.vote__count__value--party2 {
+    right: 0px;
 }
 .votes__to-win {
     font-size: 1rem;
@@ -320,6 +322,7 @@
 
 <section class="gel-wrap banner" role="region" aria-labelledby="nw-c-Election_results__title">
 <h2 id="nw-c-Election_results__title">US Election results</h2>
+<div style="width: 10rem; background-color: green">10 rem width</div>
 
 <svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
 

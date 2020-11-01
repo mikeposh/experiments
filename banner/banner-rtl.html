@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html class="no-touch" lang="he" dir="rtl">
+<head>
+    <title>Elections banner mark up</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    *, *:before, *:after {
+        box-sizing: inherit;
+    }
+    body, ul, li, p {
+        margin: 0;
+        padding: 0;
+    }
+    ul { list-style: none;}
+
+    body {
+        font-size: 62.5%;
+        line-height: 1;
+    }
+    body {
+        font-family: Helvetica,Arial,freesans,sans-serif;
+    }
+
+    .vh {
+        -webkit-clip-path: inset(100%);
+        clip-path: inset(100%);
+        -webkit-clip: rect(1px,1px,1px,1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        position: absolute;
+        width: 1px;
+        overflow: hidden;
+        margin: 0px;
+    }
+    </style>
+
+<style>
+:root {
+    --bar--color: #e6e6e6;
+    --color--party1: #0a6aa6;
+    --color--party2: #cd181c;
+    --color--news-ebon: #222222;
+    --color--news-rhino: #5a5a5a;
+    --color--news-ghost: #fdfdfd;
+    --color--news-pebble: #aeaeb5;
+    --color--news-kingfisher: #1380A1;
+}
+.banner {
+    padding: 16px 16px;
+    font-family: ReithSans,Arial,Helvetica,freesans,sans-serif;
+    box-sizing: border-box;
+}
+.editorial-intro {
+    margin: 16px 32px 32px;
+    text-align: center;
+}
+.votes__metadata {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+    padding: 0 8px;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    left: 50%;
+    max-width: calc(100% - 2 * (4px + 64px));
+}
+.metadata__item {
+    transform: translateX(-50%);
+}
+.metadata__updated {
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+.voting-details {
+    font-size: 0.8rem;
+    margin-top: 3rem;
+}
+
+.votes {
+    /* border: solid pink 1px; */
+    --votes--total: 538;
+
+    --votes--party1: 268;
+    --votes--party2: 268;
+
+    --votes--party1: 24;
+    --votes--party2: 105;
+
+    /* bar is 48px for both mobile and desktop - just need to center fonts of different heights within bar */
+    --bar--height: 48px;
+
+    --name--y-offset: 62px;
+    --name--y-offset: 3.875rem;
+    --party--above-name: 20px;
+    --party--above-name: 1.25rem;
+    --picture--above-party: 5rem;
+
+    --picture--height: 74px;
+    --picture--width: 74px;
+
+    --name--y-offset--desktop: 4.5rem;
+    --party--above-name--desktop: 1.375rem;
+
+    --picture--above-party--desktop: 32px;
+    --picture--height--desktop: 90px;
+    --picture--width--desktop: 90px;
+
+    --to-win--offset: -70px;
+    --to-win--gap: 0.2em;
+    --to-win--projection: 6px;
+
+    padding-top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party));
+    padding-bottom: 1.6em;
+
+    /* votes-to-win and metadata need to be positioned relative to this element with the current markup */
+    position: relative;
+}
+.votes__candidates {
+    background-color: var(--bar--color);
+    display: block;
+    height: var(--bar--height);
+    position: relative;
+    width: calc(100% - 16px);
+    width: 100%;
+}
+.vote__party {
+    background-repeat: no-repeat;
+    background-size: var(--picture--height);
+    min-height: var(--picture--height);
+    padding-top: var(--picture--above-party);
+    position: absolute;
+    top: calc(-1 * (var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party)));
+    text-transform: uppercase;
+}
+.vote__party--party2 {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Trump_LTR.png);
+    background-position: top right;
+}
+.vote__party--party1 {
+    background-image: url(https://news.files.bbci.co.uk/elections/2016/us-elections/candidates/Clinton_LTR.png);
+    background-position: top left;
+}
+.vote__name {
+    font-weight: bold;
+    position: absolute;
+    top: calc(-1 * var(--name--y-offset));
+    text-transform: uppercase;
+}
+.vote__party--party2,
+.vote__name--party2 {
+    color: var(--color--party2);
+    right: 0;
+}
+.vote__party--party1,
+.vote__name--party1 {
+    color: var(--color--party1);
+    left: 0;
+}
+.vote__count {
+    display: block;
+    font-weight: bold;
+    height: var(--bar--height);
+    line-height: var(--bar--height);
+    position: absolute;
+    top: 0;
+}
+.vote__count__value {
+    color: black;
+    display: block;
+    position: absolute;
+    top: var(--bar--height);
+}
+.vote__count__value--party1 {
+    left: 0px;
+}
+.vote__count__value--party2 {
+    right: 0px;
+}
+.vote__count--party1 {
+    background-color: var(--color--party1);
+    color: white;
+    left: 0;
+    width: calc(100% * (var(--votes--party1) / var(--votes--total)));
+}
+.vote__count--party2 {
+    background-color: var(--color--party2);
+    color: white;
+    right: 0;
+    width: calc(100% *  var(--votes--party2) / var(--votes--total) );
+}
+.votes__to-win {
+    font-size: 1rem;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party));
+    transform: translate(-50%, calc(-100% - var(--to-win--gap) - var(--to-win--projection)));
+}
+.votes__to-win::after {
+    background-color: black;
+    content: " ";
+    height: calc(var(--to-win--projection) + var(--bar--height));
+    left: 50%;
+    position: absolute;
+    top: calc(100% + var(--to-win--gap));
+    width: 1px;
+}
+
+/* 400px */
+/*
+@media (max-width: 25em) {
+    .votes {
+        padding-top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party) + 2rem);
+    }
+    .vote__party {
+        padding-top: var(--picture--above-party);
+        top: calc(-1 * (var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party) + 2rem));
+    }
+    .votes__to-win {
+        top: calc(var(--name--y-offset) + var(--party--above-name) + var(--picture--above-party) + 2rem);
+    }
+}
+*/
+/* 900px */
+@media (min-width: 56.25em) {
+    .votes {
+        padding-top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop));
+    }
+    .vote__party {
+        background-size: var(--picture--height--desktop);
+        padding-top: var(--picture--above-party--desktop);
+        min-height: var(--picture--height--desktop);
+        top: calc(-1 * (var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop)));
+    }
+    .vote__name {
+        top: calc(-1 * var(--name--y-offset--desktop));
+    }
+    .vote__party--party2,
+    .vote__name--party2 {
+        background-position: bottom right;
+        padding-right: calc(var(--picture--width--desktop) + 8px);
+    }
+    .vote__party--party1,
+    .vote__name--party1 {
+        background-position: bottom left;
+        padding-left: calc(var(--picture--width--desktop) + 8px);
+    }
+    .votes__metadata {
+        padding-top: 16px;
+        top: 0;
+        max-width: calc(100% - 2 * (4px + var(--picture--width--desktop)));
+    }
+    .votes__to-win {
+        top: calc(var(--name--y-offset--desktop) + var(--party--above-name--desktop) + var(--picture--above-party--desktop));
+    }
+}
+
+/* The expandable detail (helper?) note */
+.note {
+    width: 100%;
+}
+.note__summary:hover,
+.note__summary:focus {
+    color: var(--color--news-kingfisher);
+    text-decoration: underline;
+}
+.note__summary:focus {
+    /* setting this transparent seems a bit dishonest ... */
+    outline: none;
+}
+.note__summary {
+    --arrow-height: 20px;
+    --arrow-color: black;
+    --arrow-background-color: white;
+    --arrow-offset-y: 8px;
+    --arrow-offset-x: 8px;
+    border: solid 1px var(--color--news-ebon);
+    box-sizing: border-box;
+    display: block;
+    padding: 8px;
+    padding-right: 36px;
+    position: relative;
+    list-style: none;
+}
+.note__summary::-webkit-details-marker {
+  display: none;
+}
+.note__summary::before {
+    content: "";
+    position: absolute;
+    top: var(--arrow-offset-y);
+    right: var(--arrow-offset-x);
+    background: transparent;
+    border-left: solid calc(var(--arrow-height) / 2) transparent;
+    border-right: solid calc(var(--arrow-height) / 2) transparent;
+    border-top: solid calc(var(--arrow-height)) var(--arrow-color);
+    height: calc(var(--arrow-height));
+    width: calc(var(--arrow-height));
+}
+.note__summary::after {
+    content: "";
+    position: absolute;
+    right: calc(var(--arrow-offset-x) + var(--arrow-height) / 4);
+    top: var(--arrow-offset-y);
+    background: transparent;
+    border-left: solid calc(var(--arrow-height) / 4) transparent;
+    border-right: solid calc(var(--arrow-height) / 4) transparent;
+    border-top: solid calc(var(--arrow-height) / 2) var(--arrow-background-color);
+    height: calc(var(--arrow-height) / 2);
+    width: calc(var(--arrow-height) / 2);
+}
+.note[open] .note__summary::before {
+    transform: rotate(180deg);
+}
+.note[open] .note__summary::after {
+    transform: translateY(calc(var(--arrow-height) / 2)) rotate(180deg);
+}
+.note__details {
+    border: solid 1px var(--color--news-pebble);
+    border-top: none;
+    padding: 8px;
+}
+
+.results-links {
+    margin-top: 3rem;
+}
+
+</style>
+<link rel="stylesheet" href="https://m.files.bbci.co.uk/modules/bbc-morph-news-page-styles/2.4.1/enhanced.css">
+<link rel="stylesheet" href="https://nav.files.bbci.co.uk/orbit/b3428ed36e7e195dbf298117ef155a8f/css/orb-ltr.min.css">
+</head>
+<body>
+<h1>BBC News home</h1>
+
+<section class="gel-wrap banner" role="region" aria-labelledby="nw-c-Election_results__title">
+<h2 id="nw-c-Election_results__title">US Election results</h2>
+<div style="width: 10rem; background-color: green">10 rem width</div>
+
+<svg width="200" height="10" aria-hidden="true" focusable="false"></svg>
+
+<p class="gel-double-pica editorial-intro">זהו טקסט עריכה שמתאר את המתרחש ברגע זה</p>
+
+<div class="gel-canon votes">
+    <ul class="votes__candidates" role="list">
+        <li class="votes_vote vote vote--party1" role="listitem">
+            <span role="text">
+                <span class="gel-long-primer-bold vote__party vote__party--party1">רפובליקני</span><span class="vh">, </span>
+                <span class="gel-canon vote__name vote__name--party1">טראמפ</span><span class="vh">, </span>
+                <span class="gel-canon vote__count vote__count--party1"><span class="vote__count__value vote__count__value--party1">105</span></span>
+            </span>
+        </li>
+        <li class="votes_vote vote vote--party2" role="listitem">
+            <span role="text">
+                <span class="gel-long-primer-bold vote__party vote__party--party2">דמוקרט</span><span class="vh">, </span>
+                <span class="gel-canon vote__name vote__name--party2">ביידן</span><span class="vh">, </span>
+                <span class="gel-canon vote__count vote__count--party2"><span class="vote__count__value vote__count__value--party2">24</span></span>
+            </span>
+        </li>
+    </ul>
+    <p class="gel-long-primer votes__to-win">270 לנצח</p>
+
+    <div class="votes__metadata metadata">
+        <p class="gel-long-primer metadata__item metadata__states">14 מתוך 50 מדינות התקשרו</p>
+        <p class="gel-minion metadata__item metadata__updated"><time>לפני 20 דקות</time> עודכן</p>
+    </div>
+</div>
+
+<details class="gel-long-primer note">
+    <summary class="gel-long-primer-bold note__summary">סקרים קרובים בארצות הברית אך הצבעות הדואר גורמות לבחירות להימשך ליום השני</summary>
+
+    <p class="note__details">פרטים על סקרים קרובים בארצות הברית אך הצבעות הדואר גורמות לבחירות להימשך ליום השני ואיזה סיפור זה.</p>
+</details>
+
+<div class="results-links">
+    <a href="#">דף תוצאות הבחירות בארצות הברית</a>
+
+    <a href="#">
+    <span role="text">
+        <span aria-hidden="true">LIVE </span>
+        <span class="vh">Live</span>
+        Updates
+    </span>
+    </a>
+</div>
+</section>
+
+</body>
+</html>

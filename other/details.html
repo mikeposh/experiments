@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <title>Details element example</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *, *::after, *::before {
+        box-sizing: inherit;
+      }
+      details {
+        background-color: rgba(220, 220, 255);
+        border: transparent 0.0625rem solid;
+        border: solid 0.0625rem rgba(255, 0, 0, 0.8);
+      }
+      summary {
+        cursor: pointer;
+        border: solid 1px red;
+        padding: 0.5rem;
+      }
+      summary:hover *,
+      summary:focus * {
+        font-weight: 700;
+        text-decoration: underline;
+      }
+      summary:focus {
+        outline: transparent solid 0.0625rem;
+      }
+      summary h2 {
+        display: inline-block;
+        font-weight: 400;
+      }
+      details .content {
+        border: solid 1px blue;
+      }
+    </style>
+</head>
+<body>
+  <h1>Details element</h1>
+
+  <details>
+    <summary><h2>Summary</h2></summary>
+    <div class="content">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>
+    </div>
+  </details>
+</body>
+</html>
