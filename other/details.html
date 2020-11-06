@@ -21,11 +21,24 @@
       summary {
         cursor: pointer;
         border: solid 1px red;
+        font-weight: 700;
         padding: 0.5rem;
       }
+
+      /*
+        seem to have some difficulty for underline to work here in Safari/Mac
+        shows in dev tools as computed style, but does not appear
+      */
+      summary:hover,
+      summary:focus {
+        color: #bb0000;
+        font-weight: 700;
+        text-decoration: underline !important;
+      }
+
+      /* but underline works OK here: */
       summary:hover *,
       summary:focus * {
-        font-weight: 700;
         text-decoration: underline;
       }
       summary:focus {
@@ -44,7 +57,7 @@
   <h1>Details element</h1>
 
   <details>
-    <summary><h2>Summary</h2></summary>
+    <summary><h2>Summary title</h2></summary>
     <div class="content">
       <p>One</p>
       <p>Two</p>
@@ -53,7 +66,16 @@
   </details>
 
   <details>
-    <summary><h2>Summary</h2></summary>
+    <summary>Summary</summary>
+    <div class="content">
+      <p>One</p>
+      <p>Two</p>
+      <p>Three</p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span>Summary in span</span></summary>
     <div class="content">
       <p>One</p>
       <p>Two</p>
