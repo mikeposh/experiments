@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <title>Scoreboards 2021 screen reader UX - List example</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    ul, ol { list-style: none;}
+    .vh { -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    -webkit-clip: rect(1px,1px,1px,1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    position: absolute;
+    width: 1px;
+    overflow: hidden;
+    margin: 0px; }
+    </style>
+</head>
+<body>
+<main role=main>
+    <h1>Scoreboards 2021 screen reader UX</h1>
+
+    <h2>List AT testing example</h2>
+
+    <h3>Final round results</h3>
+
+    <!-- Not sure the wording 'Show all' works very well combined with the aria semantics of expanded and collaposed so have used an aria-label to ommit this
+    Or could just not use the aria attribute? -->
+    <button aria-expanded="false" aria-label="2016 winners">Show all 2016 winners</button>
+
+    <p>Next a button with no aria</p>
+
+    <button>Show all 2016 winners</button>
+
+    <p>Counting complete</p>
+
+    <!-- Use ol if ordered by winner first etc -->
+    <ul role="list">
+        <li>
+            <h4> <!-- Could use a strong element if can't use a heading here -->
+                <a href="https://www.bbc.co.uk/news/topics/ckn41n142d2t/cambridge-city-council">Cambridge and Peterborough</a>
+            </h4>
+
+            <p>
+                <img src="https://news.files.bbci.co.uk/include/topics/topos/373/images/briantaylor.png" alt="" width="50" height="50"> <!-- Empty alt attribute as this would repeat the following text -->
+                <span role="text"> <!-- Needed to stop text splitting in VoiceOver iPhone -->
+                    <span>Conservative</span><span class="vh">, </span>
+                    <!-- Note tested with a strong element instead of comma - no semantics are passed to voiceover from this so this can't be used as a differentiator, also a comma works well when CSS isn't there -->
+                    <span>John Smith</span>
+                </span>
+            </p>
+
+            <!-- Details is nice as this works with out JS - It's more robust and will work for more users (though no native IE11 support - it's just open all the time), though aria-expanded will give us the same semantics that we could match in the show/expand all button text at the top
+
+            - The details element represents a disclosure widget from which the user can obtain additional information or controls.
+            - The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any.
+            -->
+
+            <button aria-expanded="true">2016 winner</button> <!-- Think I prefer to use details as its' more robust and still semantically correct but not too fussed if people prefer a button and it has better support with AT -->
+
+            <div class="button-content">
+                <p>
+                    <span role="text">
+                        <span>Labour</span><span class="vh">, </span>
+                        <span>Charlie Brown</span>
+                    </span>
+                </p>
+            </div>
+
+            <!--
+            For PCC - Same as details below but has a paragraph element instead of list as only 1 piece of data -->
+            <!-- <details>
+                <summary>2016 winner</summary>
+
+                <p>
+                    <span>Labour</span><span class="vh">, </span>
+                    <span>Candidate name</span>
+                </p>
+            </details> -->
+
+            <details>
+                <summary>Elected members</summary>
+
+                <h5>London constituency assembly members</h5> <!-- Could use a strong element if not using headings, nested in a p tag? -->
+
+                <ul role="list">
+                    <li>
+                        <span role="text">
+                            <span>Southwark</span><span class="vh">, </span>
+                            <span>Fred Flintstone</span>
+                        </span>
+                    </li>
+                    <li>
+                        <span role="text">
+                            <span>Lambeth</span><span class="vh">, </span>
+                            <span>Bart Simpson</span>
+                        </span>
+                    </li>
+                </ul>
+
+                <h5>London-wide assembly members</h5> <!-- Could use a strong element if not using headings, nested in a p tag? -->
+
+                <ol role="list">
+                    <li>Sarah Gardner</li>
+                    <li>Gaynor Whittle</li>
+                </ol>
+            </details>
+        </li>
+        <li>
+            <h4>
+                <img src="https://static.files.bbci.co.uk/news-archive/news.files.bbci.co.uk/include/elections/ge2019/party-logos/by-code/v1/con.svg" alt="" width="50" height="50">
+                <span role="text">
+                    <span>Liberal Democrat</span><span class="vh">, </span>
+                    <span>Sam Esmail</span>
+                </span>
+            </h4>
+            <ul role="list">
+                <li>
+                    <span role="text">
+                        <span>Final total votes</span>
+                        <span>88,826</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>Vote share</span>
+                        <span>59.9&#37;</span>
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>First round results</h3>
+
+    <p>Counting complete</p>
+
+    <ol role="list">
+        <li>
+            <h4>
+                <img src="https://static.files.bbci.co.uk/news-archive/news.files.bbci.co.uk/include/elections/ge2019/party-logos/by-code/v1/con.svg" alt="" width="50" height="50">
+                <span role="text">
+                    <span>Conservative</span>
+                </span>
+            </h4>
+
+            <ul role="list">
+                <li>
+                    <span role="text">
+                        <span>1st preference</span>
+
+                      <!-- As this is one list item, have not used sentence case for this span, so this item reads as one when CSS is off, can use CSS to make 'T' for 'Total' uppercase -->
+                        <!-- Have put this text last to aid quick browsing e.g. the key information is first -->
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>total votes</span>
+                        <span>76,064</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>vote share</span>
+                        <span>38.0&#37;</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>2nd preference</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>total votes</span>
+                        <span>12,762</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>vote share</span>
+                        <span>38.7&#37;</span>
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            <h4>
+                <span role="text">
+                    <span>Liberal Democrat</span><span class="vh">, </span>
+                    <span>Chris Jefferys</span>
+                </span>
+            </h4>
+
+            <ul role="list">
+                <li>
+                    <span role="text">
+                        <span>1st preference</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>total votes</span>
+                        <span>76,064</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>vote share</span>
+                        <span>38.0&#37;</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>2nd                                         preference</span>
+                  </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>total votes</span>
+                        <span>12,762</span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>vote share</span>
+                        <span>38.7&#37;</span>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <small>Councillors change compared with 2016</small>
+
+    <aside role="complementary" aria-label="Second preference votes">
+        <p>Second preference votes are only used to elect the mayor if no candidate receives more than 50&#37; of the vote. The top two candidates then receive the second preference votes from their eliminated opponents.</p>
+
+        <a href="https://www.bbc.co.uk/news/uk-england-london-17769428">How mayoral elections work</a>
+    </aside>
+</main>
+</body>
+</html>
