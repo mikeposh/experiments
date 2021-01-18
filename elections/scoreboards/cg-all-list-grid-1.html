@@ -31,7 +31,7 @@
             padding: 0.5rem;
         }
 
-        .grid-wrapper,
+        .data-wrapper,
         .grid--first-pref-total,
         .grid--first-pref-share,
         .grid--second-pref-total,
@@ -41,59 +41,51 @@
             row-gap: 1rem;
         }
 
-        .grid-wrapper {
+        .data-wrapper {
             background-color: rgba(128, 0, 0, 0.2);
-            grid-template-columns: 5rem 5rem 5rem;
+            grid-template-columns: 5rem 15rem 15rem;
             grid-template-rows: auto auto;
         }
         .grid--first-pref-total,
         .grid--first-pref-share {
-            grid-template-columns: 5rem 5rem;
+            grid-template-columns: 5rem 15rem;
         }
         .grid--second-pref-total,
         .grid--second-pref-share {
-            grid-template-columns: 5rem;
+            /* grid-template-columns: 15rem; */
         }
 
-        .cell--first-pref-total {
+        .data--first-pref-total {
             background-color: rgba(128, 128, 0, 0.2);
-            /* grid-column: 1 / 3;
-            grid-row: 1 / 3; */
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
         }
-        .cell--first-pref-share {
+        .data--first-pref-share {
             background-color: rgba(0, 128, 128, 0.2);
-            /* grid-column: 1 / 3;
-            grid-row: 3; */
+            grid-column: 1 / 3;
+            grid-row: 3;
         }
-        .cell--second-pref-total {
+        .data--second-pref-total {
             background-color: rgba(0, 128, 128, 0.2);
-            /* grid-column: 3;
-            grid-row: 1 / 3; */
+            grid-column: 3;
+            grid-row: 1 / 3;
         }
-        .cell--second-pref-share {
+        .data--second-pref-share {
             background-color: rgba(128, 128, 0, 0.2);
-            /* grid-column: 3;
-            grid-row: 3; */
+            grid-column: 3;
+            grid-row: 3;
         }
         .heading--first-pref {
-            /* grid-column: 2;
-            grid-row: 1; */
+            grid-column: 2;
+            grid-row: 1;
         }
         .heading--total {
-            /* grid-column: 1;
-            grid-row: 2; */
+            grid-column: 1;
+            grid-row: 2;
         }
         .value--first-pref-total {
-            /* grid-column: 2;
-            grid-row: 2; */
-        }
-        .heading--share {
-            /* grid-column: 1;
-            grid-row: 1; */
-        }
-        .value--first-pref-share {
-            /* grid-column: 2;
-            grid-row: 1 */
+            grid-column: 2;
+            grid-row: 2;
         }
     </style>
 </head>
@@ -225,8 +217,8 @@
                 </span>
             </h4>
 
-            <ul role="list" class="grid-wrapper">
-                <li class="cell--first-pref-total">
+            <ul role="list" class="data-wrapper">
+                <li class="data--first-pref-total">
                     <span role="text" class="grid--first-pref-total">
                         <span class="data-heading heading--first-pref">1st preference</span>
                         <span class="data-heading heading--total">total votes</span> <!-- As this is one list item, have not used sentence case for this span, so this item reads as one when CSS is off, can use CSS to make 'T' for 'Total' uppercase -->
@@ -234,21 +226,21 @@
                         <span class="data-value value--first-pref-total">76,064</span>
                     </span>
                 </li>
-                <li class="cell--second-pref-total">
+                <li class="data--second-pref-total">
                     <span role="text" class="grid--second-pref-total">
                         <span class="data-heading heading--second-pref">2nd preference</span>
                         <span class="vh">total votes</span>
                         <span class="data-value value--second-pref-votes">12,762</span>
                     </span>
                 </li>
-                <li class="grid--first-pref-share">
+                <li class="data--first-pref-share">
                     <span role="text" class="grid--first-pref-share">
                         <span class="vh">1st preference</span>
                         <span class="data-heading heading--share">vote share</span>
                         <span class="data-value value--second-pref-share">38.7&#37;</span>
                     </span>
                 </li>
-                <li class="grid--second-pref-share">
+                <li class="data--second-pref-share">
                     <span role="text" class="grid--second-pref-share">
                         <span class="vh">2nd preference</span>
                         <span class="vh">vote share</span>
