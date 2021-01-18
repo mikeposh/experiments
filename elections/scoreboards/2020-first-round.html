@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <title>Scoreboards 2021 screen reader UX - List example (MET variant)</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+:root {
+--tablet-width: 600px;
+--small-mobile-width: 400px;
+--desktop-width: 768px;
+--metal: #6e6e73;
+--shadow: #3f3f42;
+--lunar: #f2f2f2;
+
+--gel-bp-m: 37.5em;
+}
+
+    /* MET added */
+.gel-layout {
+    font-family: Helvetica,Arial,sans-serif;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.mayor_heading {
+    color: var(--shadow);
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    margin-top: 56px;
+}
+
+@media screen and (min-width: 768px) {
+  .mayor_heading {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+.mayor {
+    border-top: 1px solid #d8d8d8;
+    display: flex;
+    margin: 0px 0 0px;
+    padding: 16px 0px 16px;
+}
+
+.mayor__labels__data {
+    color: var(--shadow);
+}
+
+.mayor__labels__editorial {
+    color: var(--metal);
+}
+
+.mayor__labels__small {
+    font-size: 14px;
+    line-height: 18px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__labels__small {
+        font-size: 13px;
+        line-height: 16px;
+    }
+}
+
+.mayor__labels__partyname {
+    padding-bottom: 8px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__labels__partyname {
+        padding-bottom: 0;
+  }
+}
+
+.mayor__labels__large {
+    font-size: 20px;
+    line-height: 24px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__labels__large {
+      font-size: 24px;
+      line-height: 28px;
+  }
+}
+
+.mayor__labels__finalvotesstring {
+    padding-bottom: 9px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__labels__finalvotesstring {
+        padding-bottom: 11px;
+  }
+}
+
+.mayor__footer {
+    border-top: 1px solid #d8d8d8;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0 0px;
+    padding: 0px 0px 8px;
+    text-align: right;
+}
+.mayor__footer__false {
+    display: none;
+}
+
+.mayor__grid {
+    border-left-style: solid;
+    border-width: 4px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 8px;
+    width: 100%;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: 52.6% 47.4%;
+    min-height: 116px;
+    grid-gap: 16px;
+  }
+}
+
+@media screen and (min-width: 37.5em) {
+  .mayor__grid__second-round {
+      grid-template-columns: 68.3% 31.7%;
+      grid-template-rows: repeat(1, 100%);
+      min-height: 52px;
+      grid-gap: 0px;
+    }
+}
+
+@media screen and (min-width: 37.5em) {
+    .mayor__grid__first-round {
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(1, 100%);
+        min-height: 52px;
+        grid-gap: 0px;
+    }
+}
+
+.mayor__grid__lhs {
+    display: flex;
+    flex-direction: row;
+    max-height: 50px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__grid__lhs {
+    max-height: 52px;
+  }
+}
+
+.mayor__grid__lhs__text {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.mayor__grid__lhs__text__withimage {
+    padding-left: 8px;
+}
+
+.mayor__grid__lhs__withimage {
+    width: 50px;
+    height: 50px;
+}
+
+.mayor__grid__lhs__noimage {
+    display: none;
+}
+
+.mayor__grid__rhs {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__grid__rhs {
+    padding-top: 0px;
+  }
+}
+
+.mayor__grid__rhs__editorial {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-self: flex-end;
+}
+@media screen and (min-width: 37.5em) {
+  .mayor__grid__rhs__editorial {
+    grid-gap: 12px;
+  }
+}
+
+.mayor__grid__rhs__data {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(2, 50%);
+    text-align: right;
+    grid-gap: 8px;
+}
+
+.mayor__grid__rhs__prefdata {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 76px;
+    text-align: right;
+}
+
+.mayor__grid__total {
+    align-self: flex-end;
+}
+</style>
+</head>
+<body>
+
+<div class="gel-layout gel-layout--center">
+    <div class="gel-layout__item gel-10/12@xl gel-8/12@xxl">
+
+        <h3 class="mayor_heading">Mayoral Result</h3>
+
+            <div class="mayor">
+                <dl role="grid" class="mayor__grid mayor__grid__first-round le2019__party--lab le2020__party--lab" aria-label="Labour">
+                    <div class="mayor__grid__lhs">
+                        <!-- {{#isLondon}}
+                            <img class="mayor__grid__lhs__{{imageStatus}}" src="{{ image }}" alt="image of {{candidateName}}"/>
+                        {{/isLondon}} -->
+                        <div class="mayor__grid__lhs__text mayor__grid__lhs__text__{{imageStatus}}">
+                            <div class="mayor__labels__data mayor__labels__partyname mayor__labels__small">
+                                Party Name
+                            </div>
+
+                            <div class="mayor__labels__data mayor__labels__large">
+                                Candidate Name
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mayor__grid__rhs">
+                        <div class="mayor__grid__rhs__editorial mayor__grid__rhs__editorial__second-round">
+                            <div class="mayor__labels__editorial mayor__labels__small mayor__grid__total mayor__labels__finalvotesstring">
+                                Total votes
+                            </div>
+                            <div class="mayor__labels__editorial mayor__labels__small">
+                                Vote share
+                            </div>
+                        </div>
+                        <div class="mayor__grid__rhs__prefdata">
+                            <div class="mayor__labels__editorial mayor__labels__small mayor__grid__total">
+                                First preference votes
+                            </div>
+                            <div class="mayor__labels__data mayor__labels__large mayor__grid__total">
+                                38,000
+                            </div>
+                            <div class="mayor__labels__data mayor__labels__small">
+                                30.0%
+                            </div>
+                        </div>
+                        <div class="mayor__grid__rhs__prefdata">
+                            <div class="mayor__labels__editorial mayor__labels__small mayor__grid__total">
+                                Second preference votes
+                            </div>
+                            <div class="mayor__labels__data mayor__labels__large mayor__grid__total">
+                                59,000
+                            </div>
+                            <div class="mayor__labels__data mayor__labels__small">
+                                34.3%
+                            </div>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+    </div>
+</div>
+
+</body>
+</html>

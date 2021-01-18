@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en-GB">
+    <title>Scoreboards 2021 screen reader UX - List example (MET variant)</title>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"/> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+    ul, ol { list-style: none;}
+    .vh { -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    -webkit-clip: rect(1px,1px,1px,1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    position: absolute;
+    width: 1px;
+    overflow: hidden;
+    margin: 0px; }
+    </style>
+    <style>
+        span {
+            display: inline-block;
+        }
+        .grid-heading {
+            background-color: rgba(255, 0, 0, 0.4);
+            color: green;
+            padding: 0.5rem;
+        }
+        .grid-wrapper {
+            background-color: rgba(128, 0, 0, 0.2);
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: 5rem 5rem 5rem;
+            grid-template-areas: "col1 col1 col2";
+        }
+        .grid-col-1 {
+            background-color: rgba(128, 128, 0, 0.4);
+            grid-area: col1;
+        }
+        .grid-col-2 {
+            background-color: rgba(0, 0, 128, 0.4);
+            grid-area: col2;
+        }
+        .grid-left {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: 5rem 5rem;
+            grid-template-areas:
+                "... row1head"
+                "row2head row2cell"
+                "row3head row3cell";
+        }
+        .grid-heading--column {
+            grid-area: row1head
+        }
+        .grid-heading--total {
+            grid-area: row2head;
+        }
+        .grid-heading--share {
+            grid-area: row3head;
+        }
+        .col-1-row-2-value {
+            grid-area: row2cell;
+        }
+        .col-1-row-3-value {
+            grid-area: row3cell;
+        }
+        .grid-right {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: 5rem;
+            grid-template-areas:
+                "row1head"
+                "row2cell"
+                "row3cell";
+        }
+        .grid-value {
+            background-color: rgba(255, 255, 0, 0.4);
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<main role=main>
+<!--
+    <h1>Scoreboards 2021 screen reader UX</h1>
+
+    <h2>List AT testing example</h2>
+
+    <h3>First round results</h3>
+
+    <p>Counting complete</p>
+
+-->
+
+    <ol role="list">
+        <li>
+            <h4>
+                <img src="https://static.files.bbci.co.uk/news-archive/news.files.bbci.co.uk/include/elections/ge2019/party-logos/by-code/v1/con.svg" alt="" width="50" height="50">
+                <span role="text">
+                    <span>Conservative</span>
+                </span>
+            </h4>
+
+            <ul role="list" class="grid-wrapper">
+                <li class="grid-col-1">
+                    <span role="text" class="grid-left">
+                        <span class="grid-heading grid-heading--column ">1st preference</span>
+                        <span class="grid-heading grid-heading--total">total votes</span> <!-- As this is one list item, have not used sentence case for this span, so this item reads as one when CSS is off, can use CSS to make 'T' for 'Total' uppercase -->
+                        <span class="col-1-row-2-value grid-value">76,064</span>
+                        <span class="vh">, </span>
+                        <span class="grid-heading grid-heading--share">vote share</span>
+                        <span class="col-1-row-3-value grid-value">38.0&#37;</span>
+                    </span>
+                </li>
+                <li class="grid-col-2">
+                    <span role="text" class="grid-right">
+                        <span class="grid-heading grid-heading">2nd preference</span>
+                        <span class="vh">total votes</span>
+                        <span class="col-2-row-1-value grid-value">12,762</span>
+                        <span class="vh">, </span>
+                        <span class="vh">vote share</span>
+                        <span class="col-2-row-3-value grid-value">30.7&#37;</span>
+                    </span>
+                </li>
+            </ul>
+
+        </li>
+        <li>
+            <h4>
+                <span role="text">
+                    <span>Liberal Democrat</span><span class="vh">, </span>
+                    <span>Chris Jefferys</span>
+                </span>
+            </h4>
+
+            <ul role="list">
+                <li>
+                    <span role="text">
+                        <span>1st preference</span>
+                        <span>total votes</span>
+                        <span>76,064</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span>2nd preference</span>
+                        <span class="vh">total votes</span>
+                        <span>12,762</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span class="vh">1st preference</span>
+                        <span>vote share</span>
+                        <span>38.0&#37;</span>
+                    </span>
+                </li>
+                <li>
+                    <span role="text">
+                        <span class="vh">2nd preference</span>
+                        <span class="vh">vote share</span>
+                        <span>38.7&#37;</span>
+                    </span>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <small>Councillors change compared with 2016</small>
+
+    <aside role="complementary" aria-label="Second preference votes">
+        <p>Second preference votes are only used to elect the mayor if no candidate receives more than 50&#37; of the vote. The top two candidates then receive the second preference votes from their eliminated opponents.</p>
+
+        <a href="https://www.bbc.co.uk/news/uk-england-london-17769428">How mayoral elections work</a>
+    </aside>
+</main>
+</body>
+</html>

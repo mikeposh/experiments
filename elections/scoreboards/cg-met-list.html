@@ -17,68 +17,6 @@
     overflow: hidden;
     margin: 0px; }
     </style>
-    <style>
-        span {
-            display: inline-block;
-        }
-        .grid-heading {
-            background-color: rgba(255, 0, 0, 0.4);
-            color: green;
-            padding: 0.5rem;
-        }
-        .grid-wrapper {
-            background-color: rgba(128, 0, 0, 0.2);
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: 5rem 5rem 5rem;
-            grid-template-areas: "col1 col1 col2";
-        }
-        .grid-col-1 {
-            background-color: rgba(128, 128, 0, 0.4);
-            grid-area: col1;
-        }
-        .grid-col-2 {
-            background-color: rgba(0, 0, 128, 0.4);
-            grid-area: col2;
-        }
-        .grid-left {
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: 5rem 5rem;
-            grid-template-areas:
-                "... row1head"
-                "row2head row2cell"
-                "row3head row3cell";
-        }
-        .grid-heading--column {
-            grid-area: row1head
-        }
-        .grid-heading--total {
-            grid-area: row2head;
-        }
-        .grid-heading--share {
-            grid-area: row3head;
-        }
-        .col-1-row-2-value {
-            grid-area: row2cell;
-        }
-        .col-1-row-3-value {
-            grid-area: row3cell;
-        }
-        .grid-right {
-            display: grid;
-            grid-gap: 1rem;
-            grid-template-columns: 5rem;
-            grid-template-areas:
-                "row1head"
-                "row2cell"
-                "row3cell";
-        }
-        .grid-value {
-            background-color: rgba(255, 255, 0, 0.4);
-            padding: 0.5rem;
-        }
-    </style>
 </head>
 <body>
 <main role=main>
@@ -102,28 +40,28 @@
                 </span>
             </h4>
 
-            <ul role="list" class="grid-wrapper">
-                <li class="grid-col-1">
-                    <span role="text" class="grid-left">
-                        <span class="grid-heading grid-heading--column ">1st preference</span>
-                        <span class="grid-heading grid-heading--total">total votes</span> <!-- As this is one list item, have not used sentence case for this span, so this item reads as one when CSS is off, can use CSS to make 'T' for 'Total' uppercase -->
-                        <span class="col-1-row-2-value grid-value">76,064</span>
-                        <span class="vh">, </span>
-                        <span class="grid-heading grid-heading--share">vote share</span>
-                        <span class="col-1-row-3-value grid-value">38.0&#37;</span>
-                    </span>
-                </li>
-                <li class="grid-col-2">
-                    <span role="text" class="grid-right">
-                        <span class="grid-heading grid-heading">2nd preference</span>
-                        <span class="vh">total votes</span>
-                        <span class="col-2-row-1-value grid-value">12,762</span>
-                        <span class="vh">, </span>
-                        <span class="vh">vote share</span>
-                        <span class="col-2-row-1-value grid-value">38.7&#37;</span>
-                    </span>
-                </li>
-            </ul>
+<ul role="list">
+    <li>
+        <span role="text">
+            <span>1st preference</span>
+            <span>total votes</span> <!-- As this is one list item, have not used sentence case for this span, so this item reads as one when CSS is off, can use CSS to make 'T' for 'Total' uppercase -->
+            <span>76,064</span>
+            <span class="vh">, </span>
+            <span>vote share</span>
+            <span>38.0&#37;</span>
+        </span>
+    </li>
+    <li>
+        <span role="text">
+            <span>2nd preference</span>
+            <span class="vh">total votes</span>
+            <span>12,762</span>
+            <span class="vh">, </span>
+            <span class="vh">vote share</span>
+            <span>38.7&#37;</span>
+        </span>
+    </li>
+</ul>
 
         </li>
         <li>
