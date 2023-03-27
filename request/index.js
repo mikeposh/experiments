@@ -8,7 +8,7 @@ const getUrls = async () => {
       console.log(url, 'SUCCESS', typeof response, Object.keys(response));
     }
     catch (error) {
-      console.log(url, 'ERROR', error);
+      console.log(url, '\n\n---\n\nWE CAUGHT AN ERROR!!!\n\n---\n\n', error.message, '\n\n---\n\n');
     }
   }
 };

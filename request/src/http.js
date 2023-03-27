@@ -1,5 +1,6 @@
-import fs from "fs";
-import https from "https";
+import fs from "node:fs";
+import http from "node:http";
+import https from "node:https";
 import requestPromise from "request-promise";
 
 const certBasePath = '/etc/pki/tls';
@@ -10,15 +11,17 @@ function getDefaults() {
   const key = fs.readFileSync(`${certBasePath}/private/client.key`);
 
   return {
-    cert,
-    key,
-    ca: [ca],
-    rejectUnauthorized: true,
+    // cert,
+    // key,
+    // ca: [ca],
+    // rejectUnauthorized: true,
+    rejectUnauthorized: false,
     secureProtocol: "TLSv1_2_method",
     headers: {
       "User-Agent": "WeatherWebComponentPoller/1.0",
     },
-    agentClass: https.Agent,
+    // agentClass: https.Agent,
+    agentClass: http.Agent,
     pool: {
       maxSockets: 25,
     },
